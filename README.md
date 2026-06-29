@@ -1,81 +1,161 @@
-# Analisis Sentimen Review Aplikasi Blibli Menggunakan Support Vector Machine (SVM)
+# 🛍️ Analisis Sentimen Ulasan Aplikasi Blibli Menggunakan Support Vector Machine (SVM)
 
-## Deskripsi Proyek
+## 📖 Deskripsi Proyek
 
-Proyek ini merupakan implementasi Analisis Sentimen terhadap ulasan pengguna aplikasi Blibli yang diperoleh dari Google Play Store. Analisis dilakukan menggunakan metode Text Mining dengan ekstraksi fitur TF-IDF dan algoritma klasifikasi Support Vector Machine (SVM).
+Proyek ini merupakan implementasi **Analisis Sentimen** terhadap ulasan pengguna aplikasi **Blibli** yang diperoleh melalui proses **scraping** dari **Google Play Store** menggunakan library **google-play-scraper**.
 
-Proyek ini dibuat untuk memenuhi tugas Ujian Akhir Semester (UAS) Analisis Sentimen.
+Analisis dilakukan menggunakan metode **Text Mining** dengan tahapan preprocessing, ekstraksi fitur **TF-IDF**, serta algoritma klasifikasi **Support Vector Machine (SVM)** untuk mengelompokkan ulasan ke dalam sentimen **Positif**, **Netral**, dan **Negatif**.
 
-## Dataset
+Proyek ini dibuat sebagai tugas **Ujian Akhir Semester (UAS)** mata kuliah **Analisis Sentimen**.
 
-Dataset yang digunakan berupa ulasan pengguna aplikasi Blibli yang telah diberi label sentimen:
+---
 
-- Positif : 400 data
-- Netral : 400 data
-- Negatif : 400 data
+## 📊 Dataset
 
-Total dataset: 1200 ulasan.
+Dataset diperoleh melalui proses **scraping Google Play Store** dengan rincian sebagai berikut:
 
-## Metodologi
+* 📱 Aplikasi : **Blibli**
+* 🌐 Sumber Data : **Google Play Store**
+* 📄 Jumlah Data : **1.200 ulasan**
 
-Tahapan yang dilakukan pada penelitian ini:
+Distribusi sentimen:
 
-1. Pengumpulan Dataset
-2. Data Cleaning
-3. Text Preprocessing
-4. Stopword Removal
-5. Ekstraksi Fitur TF-IDF
-6. Pembagian Data Training dan Testing
-7. Training Model SVM
-8. Evaluasi Model
-9. Penyimpanan Model
-10. Pengujian Model
+* 😊 Positif : **798**
+* 😐 Netral : **35**
+* 😞 Negatif : **367**
 
-## Library yang Digunakan
+---
 
-- Pandas
-- NumPy
-- NLTK
-- Scikit-learn
-- WordCloud
-- Matplotlib
-- Seaborn
-- Joblib
+## ⚙️ Metodologi
 
-## Hasil Pengujian
+Tahapan penelitian yang dilakukan:
 
-Model Support Vector Machine (SVM) menghasilkan:
+1. 📥 Scraping Data Google Play Store
+2. 🧹 Data Cleaning
+3. 🔤 Case Folding
+4. ✂️ Tokenizing
+5. 🚫 Stopword Removal
+6. 🌱 Stemming
+7. 🏷️ Labeling Sentimen
+8. 📑 Ekstraksi Fitur TF-IDF
+9. 📊 Pembagian Data Training & Testing
+10. 🤖 Training Model SVM
+11. 📈 Evaluasi Model
+12. 💾 Penyimpanan Model
+13. 🧪 Pengujian Model
 
-- Accuracy : 65.83%
+---
 
-Classification Report:
+## 📚 Library yang Digunakan
+
+* 🐼 Pandas
+* 🔢 NumPy
+* 📖 NLTK
+* 🌱 Sastrawi
+* 🤖 Scikit-learn
+* ☁️ WordCloud
+* 📊 Matplotlib
+* 🎨 Seaborn
+* 💾 Joblib
+* 📱 Google Play Scraper
+
+---
+
+## 📈 Hasil Pengujian
+
+Model **Support Vector Machine (SVM)** menghasilkan performa sebagai berikut:
+
+### 🎯 Accuracy
+
+**84,58%**
+
+### 📋 Classification Report
 
 | Sentimen | Precision | Recall | F1-Score |
 | -------- | --------- | ------ | -------- |
-| Negatif  | 0.68      | 0.64   | 0.66     |
-| Netral   | 0.56      | 0.46   | 0.51     |
-| Positif  | 0.71      | 0.88   | 0.78     |
+| Negatif  | 0.79      | 0.75   | 0.77     |
+| Netral   | 0.00      | 0.00   | 0.00     |
+| Positif  | 0.87      | 0.93   | 0.90     |
 
-## Struktur File
+> **Catatan:** Jumlah data sentimen netral yang sangat sedikit menyebabkan model belum mampu mengklasifikasikan kelas tersebut secara optimal.
+
+---
+
+## 📂 Struktur Project
 
 ```text
+uas-sentiment/
+Scraping_Data_Blibli.ipynb
 Pemodelan_Sentimen_Blibli.ipynb
-blibli_reviews_balanced_1200.csv
+Testing_Model_Blibli.ipynb
+hasil_scraping_blibli.csv
+Poster_Sentimen_Ulasan_Blibli.png
 svm_model.pkl
 tfidf_vectorizer.pkl
 README.md
 ```
 
-## Cara Menjalankan
+---
 
-1. Buka file `Pemodelan_Sentimen_Blibli.ipynb`
-2. Jalankan seluruh cell secara berurutan
-3. Model akan menghasilkan file:
-   - `svm_model.pkl`
-   - `tfidf_vectorizer.pkl`
+## 🚀 Cara Menjalankan
 
-4. Model akan menjalankan kode Pengujian Model Review Positif dan Negatif
+### 1️⃣ Scraping Data
 
-## Author
+Jalankan notebook:
 
-Wahyu Firman
+```text
+1_Scraping_Data_Blibli.ipynb
+```
+
+Notebook ini akan mengambil ulasan aplikasi Blibli dari Google Play Store dan menghasilkan file:
+
+```text
+hasil_scraping_blibli.csv
+```
+
+---
+
+### 2️⃣ Pemodelan Sentimen
+
+Jalankan:
+
+```text
+2_Pemodelan_Sentimen_Blibli.ipynb
+```
+
+Notebook ini akan melakukan:
+
+* Preprocessing
+* Labeling
+* TF-IDF
+* Training SVM
+* Evaluasi Model
+
+Kemudian menghasilkan:
+
+```text
+svm_model.pkl
+tfidf_vectorizer.pkl
+```
+
+---
+
+### 3️⃣ Pengujian Model
+
+Jalankan:
+
+```text
+3_Testing_Model_Blibli.ipynb
+```
+
+Masukkan teks ulasan, kemudian model akan memprediksi apakah ulasan termasuk:
+
+* 😊 Positif
+* 😐 Netral
+* 😞 Negatif
+
+---
+
+## 👨‍💻 Author
+
+**Wahyu Firman**
